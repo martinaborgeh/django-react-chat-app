@@ -1,0 +1,41 @@
+
+<form o onsubmit="Submitdata()" method = "POST">
+    {% csrf_token %}
+    <input placeholder = "fullname">
+    <input placeholder = "role">
+    <input placeholder = "password>
+    <input placeholder = "password2">
+    <input placeholder = "email">
+    
+   
+    <button type ='submit'>Register</button>
+</form>
+
+
+<script>
+
+function Submitdata(){
+    
+  
+ fetch(url, {
+        method: 'POST',
+        headers: {
+          "Accept": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRFToken": "{{ csrf_token }}",
+          "mode": "same-origin"
+        },
+        body: JSON.stringify(data),
+     })
+     .then(response => {
+            return response.json(data);
+     })
+     .then(response_data => {
+         console.log("registered")
+         
+
+     }).catch(err=>console.log(err))
+  
+}
+
+</script>
